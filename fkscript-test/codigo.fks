@@ -1,0 +1,9 @@
+
+api void imprimirMensaje(string msg);
+
+program int Prueba
+{
+	imprimirMensaje("Prueba");
+
+	return 2;
+}

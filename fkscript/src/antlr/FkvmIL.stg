@@ -1,0 +1,94 @@
+group FKVMIL;
+
+principal(nom, loc,instr) ::= <<
+.program <nom>
+.locals <loc>
+<instr>
+>>
+
+listainst(instr) ::= <<
+<instr; separator="\n">
+>>
+
+declaracion(tipo, id) ::= <<
+#Decl. Variable: <tipo> <id>
+>>
+
+asignacion(op, nv, val) ::= <<
+<val>
+<op> <nv>
+>>
+
+instexpr(exp) ::= <<
+<exp>
+>>
+
+instif(cond,instsi,instelse,et1,et2) ::= <<
+<cond>
+ifeq etiq<et1>
+<instsi>
+goto etiq<et2>
+etiq<et1>:
+<instelse>
+etiq<et2>:
+>>
+
+instwhile(cond,instrucciones,et1,et2) ::= <<
+etiq<et1>:
+<cond>
+ifeq etiq<et2>
+<instrucciones>
+goto etiq<et1>
+etiq<et2>:
+>>
+
+return(op,v) ::= <<
+<v>
+<op>
+>>
+
+lit_entero(v) ::= "ipush <v>"
+lit_real(v)   ::= "fpush <v>"
+lit_cadena(v) ::= "spush <v>"
+lit_logico(v) ::= "bpush <v>"
+
+ident(op,nv) ::= <<
+<op> <nv>
+>>
+
+op_comparacion(opc,op,e1,e2,et1) ::= <<
+ipush 1
+<e1>
+<e2>
+<opc>
+<op> etiq<et1>
+pop
+ipush 0
+etiq<et1>:
+>>
+
+op_aritmetico(op,e1,e2) ::= <<
+<e1>
+<e2>
+<op>
+>>
+
+opmenosunario(e1) ::= <<
+<e1>
+neg
+>>
+
+opno(e1) ::= <<
+<e1>
+bneg
+>>
+
+listaparams(lp) ::= <<
+<lp; separator="\n">
+>>
+
+llamada(id, lp) ::= <<
+<lp>
+callapi <id>
+>>
+
