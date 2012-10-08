@@ -1,0 +1,9 @@
+﻿PROYECTO FKSCRIPT
+
+Éste es el repositorio de código del proyecto FKScript, consistente en la implementación de un compilador, un ensamblador, y un máquina virtual para un lenguaje de script sencillo utilizando ANTLR 3 y C#.
+
+Puedes consultar toda la información sobre el proyecto en su web oficial:
+
+http://www.sgoliver.net/blog/?page_id=26
+
+En ella encontrarás una descripción detallada a modo de tutorial de la implementación completa de cada módulo, junto al código fuente y todas las herramientas necesarias para su desarrollo.
